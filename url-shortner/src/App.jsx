@@ -10,11 +10,15 @@ function App() {
   const [shortURLtoAnalyze,setShortURLtoAnalyze]=useState();
   const [shortURLData,setShortURLData]=useState();
 
+  const SERVER_CONNECTION_LINK=import.meta.env.VITE_SERVER_CONNECTION_LINK
+
+  console.log("server connection link is:",SERVER_CONNECTION_LINK)
+
 const createShortenUrl=()=>{
  
   setShortURLtoAnalyze('')
   setShortURLData('')
-  fetch(`http://localhost:7000/shorten`,{
+  fetch(`${SERVER_CONNECTION_LINK}/shorten`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -38,7 +42,7 @@ const createShortenUrl=()=>{
 
 const getShortUrlData=()=>{
 
-  fetch('http://localhost:7000/analysis',{
+  fetch(`${SERVER_CONNECTION_LINK}/analysis`,{
 
   method:"POST",
   headers:{
