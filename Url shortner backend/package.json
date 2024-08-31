@@ -1,0 +1,20 @@
+{
+  "name": "url-shortner-backend",
+  "version": "1.0.0",
+  "description": "An url shortner backend that create short url for long urls",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Anurag",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "generate-unique-id": "^2.0.3",
+    "mongoose": "^8.5.4",
+    "nanoid": "^5.0.7",
+    "nodemon": "^3.1.4"
+  }
+}
