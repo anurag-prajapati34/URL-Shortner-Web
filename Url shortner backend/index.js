@@ -6,7 +6,7 @@ const mongoose=require('mongoose') //mongoose package
 const dotenv=require('dotenv')
 dotenv.config()
 const PORT=process.env.PORT || 7000
-
+const SERVER_STRING=process.env.SERVER_STRING
 const app=express();
 app.use(cors())
 app.use(express.json())
@@ -119,7 +119,7 @@ console.log("Sent long url:",originalUrl)
     const shortId=generateUniqueId({
         length:8,
     })
-const shortUrl=`http://localhost:${PORT}/${shortId}`
+const shortUrl=`${SERVER_STRING}/${shortId}`
 
    await ShortUrl.create({
         shortId:shortId,
