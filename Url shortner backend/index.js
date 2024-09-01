@@ -98,7 +98,7 @@ console.log("Client inro:",extraClientInfo)
     }
         console.log("short url data for analysis:",shortUrlData)
         
-        return res.status(200).json({shortUrlData:shortUrlData})
+        return res.status(200).json({shortUrlData:shortUrlData,test:"testing in on..."})
     }).catch(()=>{
         return res.status(500).send("Server error")
     })
