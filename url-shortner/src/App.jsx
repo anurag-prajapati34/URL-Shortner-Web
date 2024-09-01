@@ -10,13 +10,15 @@ function App() {
   const [shortUrl,setShortUrl]=useState();
   const [shortURLtoAnalyze,setShortURLtoAnalyze]=useState();
   const [shortURLData,setShortURLData]=useState();
+  const [shortURLLoading,setShortURLLoading]=useState(false);
+  const [analyticsLoading,setAnalyticsLoading]=useState(false)
 const shortURLRef=useRef()
   const SERVER_CONNECTION_LINK=import.meta.env.VITE_SERVER_CONNECTION_LINK
 
   console.log("server connection link is:",SERVER_CONNECTION_LINK)
 
 const createShortenUrl=()=>{
- 
+  setShortURLLoading(true)
   setShortURLtoAnalyze('')
   setShortURLData('')
   fetch(`${SERVER_CONNECTION_LINK}/shorten`,{
@@ -29,12 +31,13 @@ const createShortenUrl=()=>{
     })
   }).then(async (response)=>{
     if(response.ok){
+      
       const responseData=await response.json()
       console.log("Successfully URL shorten.")
       setShortUrl(responseData.shortUrl)
       console.log("response data is :",responseData)
       console.log("Generated short url is :",responseData.shortUrl)
-      
+      setShortURLLoading(false)
 
     }
   })
@@ -42,7 +45,7 @@ const createShortenUrl=()=>{
 }
 
 const getShortUrlData=()=>{
-
+  setAnalyticsLoading(true)
   fetch(`${SERVER_CONNECTION_LINK}/analysis`,{
 
   method:"POST",
@@ -60,6 +63,7 @@ const getShortUrlData=()=>{
       console.log("short url data is :",responseData
       )
       setShortURLData(responseData.shortUrlData)
+      setAnalyticsLoading(false)
     }
 
 
@@ -127,7 +131,7 @@ alert("Succesfully copied..")
     </div>
 
 {
-  shortUrl?
+ shortURLLoading?<p>Generating...</p>: shortUrl?
    <div className='show-shorten-url'>  
    <p ref={shortURLRef} >{shortUrl}</p>
    <i class="fa-regular fa-copy copy-icon" onClick={copyURL}></i>
@@ -150,12 +154,12 @@ alert("Succesfully copied..")
 
     {
    
-      (shortURLData)?<div>
-<p>Total visit:{shortURLData.visitHistory
+   analyticsLoading?<p>Analysing...</p>: (shortURLData)?<div>
+<p><b>Total visit:</b>{shortURLData.visitHistory
         .length}</p>
-        <p>Created At: {shortURLData.createdAt}</p>
-        <p>Last Updated At: {shortURLData.updatedAt}</p>
-        <p>Last visit At: {
+        <p><b>Created At:</b> {shortURLData.createdAt}</p>
+        <p><b>Last Updated At:</b> {shortURLData.updatedAt}</p>
+        <p><b>Last visit At:</b> {
         
         shortURLData.visitHistory.length>0?   Date(shortURLData.visitHistory[shortURLData.visitHistory.length-1].timestamps):'No visit'
         

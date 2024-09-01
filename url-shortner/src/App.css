@@ -4,9 +4,10 @@
   padding: 2rem;
   text-align: center;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
 
   --primary-color:rgb(218, 142, 2);
   --secondary-color:#BBD1EA;
@@ -39,6 +40,10 @@ p{
 /* .container{
   display: flex;
 } */
+
+.container{
+  display: flex;
+}
 .url-input{
 
   padding: 5px 10px;
@@ -46,7 +51,7 @@ p{
   border-radius: 4px;
 font-size: 20px;
    background-color: #242424;
-
+flex: 1;
  outline: none;
 }
 
@@ -54,10 +59,18 @@ font-size: 20px;
   font-size: 20px;
   color: green;
   cursor: pointer;
+  
 }
-
+.copy-icon:hover{
+  transform: scale(1.2);
+  transition: 0.4s ease;
+}
 .space{
   margin-bottom: 20px;
+}
+b{
+  font-size: 20px;
+  color: var(--secondary-color);
 }
 /* .url-input:focus{
 
@@ -85,10 +98,13 @@ background-color: var(--primary-color);
 }
 
 
-@media (max-width:500px) {
+@media (max-width:600px) {
   .button{
     margin-left: 0px;
     margin-top: 10px;
+  }
+  .container{
+    flex-direction: column;
   }
   
 }
