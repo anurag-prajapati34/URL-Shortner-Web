@@ -113,14 +113,18 @@ app.post('/shorten',async (req,res)=>{
     console.log("Sent req body:",body)
     const originalUrl=body.url
 console.log("Sent long url:",originalUrl)
+
+const shortId=generateUniqueId({
+    length:8,
+})
+const shortUrl=`${SERVER_STRING}/${shortId}`
+console.log("short url is",shortUrl)
+
+
     if(!originalUrl){
         return res.send("Enter a url")
     }
-    const shortId=generateUniqueId({
-        length:8,
-    })
-const shortUrl=`${SERVER_STRING}/${shortId}`
-
+  
    await ShortUrl.create({
         shortId:shortId,
         originalUrl:originalUrl,
