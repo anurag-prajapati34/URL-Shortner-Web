@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import  copy from 'copy-to-clipboard'
 import './App.css'
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   const [shortUrl,setShortUrl]=useState();
   const [shortURLtoAnalyze,setShortURLtoAnalyze]=useState();
   const [shortURLData,setShortURLData]=useState();
-
+const shortURLRef=useRef()
   const SERVER_CONNECTION_LINK=import.meta.env.VITE_SERVER_CONNECTION_LINK
 
   console.log("server connection link is:",SERVER_CONNECTION_LINK)
@@ -104,6 +105,13 @@ const handleGetAnalysisBtnClick=()=>{
   }
 }
 
+const copyURL=async ()=>{
+  const shortURLText=shortURLRef.current.innerText;
+  console.log("copy text is:",shortURLText)
+copy(shortURLText)
+alert("Succesfully copied..")
+}
+
   return (
     <div className='main-container'>
 
@@ -117,8 +125,20 @@ const handleGetAnalysisBtnClick=()=>{
       <button onClick={handleShortnBtnClick} className='button'>Short</button>
 
     </div>
-    <p>{shortUrl}</p>
+
+{
+  shortUrl?
+   <div className='show-shorten-url'>  
+   <p ref={shortURLRef} >{shortUrl}</p>
+   <i class="fa-regular fa-copy copy-icon" onClick={copyURL}></i>
+  
+  </div>:''
+}
+
+
+<div className='space'></div>
     <hr></hr>
+
     <h3 className='headings'> Get Short URL Analytics</h3>
     <div className='container'>
       
