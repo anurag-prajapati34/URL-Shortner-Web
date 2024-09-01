@@ -130,7 +130,7 @@ console.log("short url is",shortUrl)
         originalUrl:originalUrl,
         shortUrl:shortUrl
     }).then(()=>{
-        return res.status(201).json({shortUrl:shortUrl})
+        return res.status(201).json({shortUrl:shortUrl,test:"just testing.."})
     }
     ).catch(()=>{
         return res.status(500).send("Server error")
