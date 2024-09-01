@@ -117,7 +117,7 @@ console.log("Sent long url:",originalUrl)
 const shortId=generateUniqueId({
     length:8,
 })
-const shortUrl=`https://quicklink-8mog.onrender.com/${shortId}`
+const shortUrl=`${SERVER_STRING}/${shortId}`
 console.log("short url is",shortUrl)
 
 
