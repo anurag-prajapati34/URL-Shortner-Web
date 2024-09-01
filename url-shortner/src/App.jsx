@@ -56,7 +56,7 @@ const getShortUrlData=()=>{
     if(response.ok){
 
       const responseData=await response.json();
-      console.log("short url data is :",responseData.shortUrlData
+      console.log("short url data is :",responseData
       )
       setShortURLData(responseData.shortUrlData)
     }
