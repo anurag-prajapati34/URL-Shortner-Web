@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { NavBar } from "../Navbar/NavBar.jsx";
 import "./QRCode.css";
 import { URLContext } from "../../contexts/URLContext.jsx";
-import "../ShortUrlAnalytics/ShortURLAnalysis.css";
+// import "../ShortUrlAnalytics/ShortURLAnalysis.css";
 import { Loader } from "../Loader/Loader.jsx";
 export const QRCode = () => {
   const [url, seturl] = useState();
