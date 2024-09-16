@@ -1,0 +1,25 @@
+.qr{
+ 
+    height: min(400px,70vw);
+  }
+  .qr-container{
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .download-btn{
+    /* 'px-3 py-2 bg-purple-700 rounded-md text-[20px] */
+    padding: 8px 12px;
+    background-color:var( --purplish-color);
+    font-size: 20px;
+    border-radius: 10px;
+  }
+
+.download-btn:hover{
+  
+    background-color: var(--dark-purplish-color);
+    transition: 0.4s ease;
+  
+}

@@ -1,0 +1,60 @@
+.filter{
+    outline: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    border: 2px solid #29292d;
+    border-radius: 10px;
+  }
+  .chart{
+
+    height: 600px;
+    width: 100%;
+text-align: end;
+
+
+    
+  }
+  .redial-charts{
+    display: flex;
+    /* height: 100%;
+    width: 100%; */
+    width: 100%;
+ 
+    gap: 20px;
+  }
+  .r-chart{
+    flex: 1;
+    display: flex;
+ 
+    align-items: center;
+  justify-content: center;
+
+  
+ 
+  
+   
+  }
+
+  @media (max-width:600px) {
+    .chart{
+      height: 300px;
+      width: 100%;
+    }
+    .redial-charts{
+      width: 100%;
+      flex-direction: column;
+      justify-content:space-between;
+   
+    }
+  }
+
+  @media (max-width:500px) {
+    .chart{
+      height: 300px;
+      width: 100%;
+     
+    }
+    .redial-charts{
+      flex-direction: column;
+    }
+  }

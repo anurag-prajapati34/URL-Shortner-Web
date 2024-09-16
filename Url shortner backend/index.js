@@ -1,7 +1,9 @@
 const express =require('express')
 const cors =require('cors')
 const generateUniqueId = require('generate-unique-id');
+const UAParser  =require('ua-parser-js')
 const mongoose=require('mongoose') //mongoose package
+const qrcode=require('qrcode')
 
 const dotenv=require('dotenv')
 dotenv.config()
@@ -33,6 +35,12 @@ const urlSchema=new mongoose.Schema({ //schema
         {
             timestamps:{
                 type:String
+            },
+            browser:{
+                type:String
+            },
+            os:{
+                type:String
             }
         }
     ]
@@ -48,19 +56,25 @@ const urlSchema=new mongoose.Schema({ //schema
 const ShortUrl=mongoose.model('shortUrls',urlSchema)
 
 app.get('/:shortId',async (req,res)=>{
+const parser=new UAParser();
+const userAgent=req.headers['user-agent'];
+const parsedResult=parser.setUA(userAgent).getResult();
+const browser=parsedResult.browser.name;
+const os=parsedResult.os.name;
 
-console.log("request header Host. is",req.headers['host'])
-console.log("request header. From is",req.headers['from'])
-console.log("request header origin. is",req.headers['origin'])
+
     const shortId=req.params.shortId
  await ShortUrl.findOneAndUpdate({shortId:shortId},{$push:{
     visitHistory:{
-        timestamps:Date.now()
+        timestamps:new Date(),
+        browser:browser,
+        os:os
+
     }
  }}).then((shortUrlData)=>{
 
 if(shortUrlData){
-    console.log("short url data is :",shortUrlData)
+   
 
     return res.redirect(shortUrlData.originalUrl)
 
@@ -141,7 +155,23 @@ console.log("short url is",shortUrl)
 
 })
 
+app.post('/qrcode',async (req,res)=>{
 
+try{
+    const body=req.body;
+    const url=body.url;
+const qrCodeData=await qrcode.toDataURL(url);
+console.log("qrData:",qrCodeData
+)
+return res.status(200).json({qrCodeData:qrCodeData});
+}
+catch(err){
+    console.log("Error :",err)
+}
+
+
+
+})
 
 
 app.listen(PORT,()=>console.log("Server started at PORT ",PORT))

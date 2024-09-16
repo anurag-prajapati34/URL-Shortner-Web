@@ -1,110 +1,186 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 10px 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Roboto", sans-serif;
 
-
-  --primary-color:rgb(218, 142, 2);
+  /* --primary-color:rgb(218, 142, 2);
   --secondary-color:#BBD1EA;
   --background-color:#04080F;
-  --call-to-action-color:#0f1a2d;
+  --call-to-action-color:#0f1a2d; */
 
+  --bluish-color: #153ce9;
+  --purplish-color: rgb(130, 54, 206);
+  --dark-purplish-color: #63299e;
+  --skybluish-color: skyblue;
+  --second-black-color: #18181a; /*for meta info & features */
 }
-
+* {
+  box-sizing: border-box;
+}
+/*URL shortner componnet css */
 
 .main-container{
-  width: min(700px,80vw);
-  /* background-color: #191919; */
-background-color: var(--background-color);
-border-radius: 8px;
-padding: 30px 20px 30px 20px;
-min-height: 70vh;
-}
-p{
-  font-size: 16px;
-}
-.main-heading{
-  margin-bottom: 5px;
-}
-
-.headings{
-  color:var(--primary-color);
-  font-size: clamp(16px,10vw,20px)
-}
-
-/* .container{
   display: flex;
-} */
-
-.container{
-  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:  100vh;
+  width: 100%;
 }
+.main-container h1,
+.center-text {
+  font-size: clamp(30px, 10vw, 80px);
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.main-container .center-text {
+  /* font-size: 72px; */
+
+  background: linear-gradient(
+    to right,
+    var(--bluish-color),
+    var(--purplish-color)
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.main-container p {
+  font-size: clamp(18px,1.7vw,25px);
+  color: white;
+  opacity: 60%;
+}
+
+.input-bg {
+  width: min(100%, 700px);
+  padding: 5px 15px;
+  margin-top: 70px;
+  position: relative;
+  border-radius: var(--border-radius);
+  padding: 2px;
+ 
+}
+.input-bg::before,
+.input-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    var(--purplish-color),
+    var(--bluish-color),
+    var(--skybluish-color)
+  );
+  background-size: 400%;
+  z-index: -1;
+  animation: rotate 8s linear infinite;
+  width: 100%;
+  border-radius: 10px;
+}
+.input-bg::after {
+  filter: blur(10px);
+  transform: translate3d(0, 0, 0); /* For Safari */
+}
+.url-input-bg {
+  
+  display: flex;
+  width: 100%;
+  /* height: 100%; */
+  border-radius: 10px;
+  padding: 5px 10px;
+  z-index: 4;
+  background-color: #0f1a2d;
+  height: 60px;
+  /* background-color: green; */
+}
+
 .url-input{
 
-  padding: 5px 10px;
-  border: 1px #191919;
-  border-radius: 4px;
-font-size: 20px;
-   background-color: #242424;
-flex: 1;
- outline: none;
-}
-
-.copy-icon{
-  font-size: 20px;
-  color: green;
-  cursor: pointer;
-  
-}
-.copy-icon:hover{
-  transform: scale(1.2);
-  transition: 0.4s ease;
-}
-.space{
-  margin-bottom: 20px;
-}
-b{
-  font-size: 20px;
-  color: var(--secondary-color);
-}
-/* .url-input:focus{
-
-  outline: 1px solid var(--primary-color);
-} */
-.button{
-  padding: 5px 10px;
-  font-size: 20px;
-  border-radius: 4px;
-margin-left: 20px;
+width: 100%;
+  border-radius: 10px;
   border: none;
   outline: none;
-height: 100%;
-cursor: pointer;
-background-color: var(--secondary-color);
-color: var(--background-color);
+  background-color: transparent;
+  padding: 5px 15px;
+
+  border-radius: 10px;
+  height: 100%;
+  font-size: 18px;
+ 
 }
-.button:hover{
-background-color: var(--primary-color);
+.url-input-bg button {
+
+  background-color: var(--purplish-color);
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  gap: 5px;
+  font-size: 20px;
 
 }
 
-.show-shorten-url{
-  margin-bottom: 20px;
+.url-input-bg button:hover {
+  background-color: var(--dark-purplish-color);
+  transition: 0.4s ease;
 }
 
-
-@media (max-width:600px) {
-  .button{
-    margin-left: 0px;
-    margin-top: 10px;
+@keyframes rotate {
+  0% {
+    background-position: 0 0;
   }
-  .container{
+
+  50% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.url-container {
+  margin-top: 30px;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+.url-container .url {
+  color: white;
+  font-size: 25px;
+}
+
+.url-container .copy-icon {
+  font-size: 30px;
+  color: green;
+  cursor: pointer;
+}
+
+@media (max-width:500px) {
+  .btn-text{
+    display: none;
+  }
+  .main-container {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  height: 70vh;
+    
+
+    width: 100%;
   }
-  
 }

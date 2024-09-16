@@ -1,0 +1,48 @@
+.footer-container{
+    margin-top: 100px;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-container p{
+   
+    font-size: clamp(20px,2vw,30px);
+  font-weight: 700;
+    background: linear-gradient(to right, var(--bluish-color),var(--purplish-color)); 
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text;
+  
+  }
+  .footer-container .socials{
+    
+  margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    font-size: 25px;
+  }
+  .social-icon i{
+    font-size:22px ;
+
+
+
+
+  }
+.social-icon{
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    background-color: var(--second-black-color);
+  
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+  }
+  .social-icon:hover{
+    transition: 0.5s ease;
+  background:linear-gradient(to right, var(--bluish-color),var(--purplish-color));  ;
+  }

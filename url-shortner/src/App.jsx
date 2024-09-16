@@ -1,173 +1,33 @@
-import { useContext, useEffect, useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import  copy from 'copy-to-clipboard'
+import {  useEffect, useRef, useState } from 'react'
+
 import './App.css'
+import { URLShortner } from './components/URLShortner/URLShortner'
+import { NavBar } from './components/Navbar/NavBar'
+import Features from './components/Features/Features'
+import Footer from './components/Footer/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [currentUrl,setCurrenUrl]=useState();
-  const [shortUrl,setShortUrl]=useState();
-  const [shortURLtoAnalyze,setShortURLtoAnalyze]=useState();
-  const [shortURLData,setShortURLData]=useState();
-  const [shortURLLoading,setShortURLLoading]=useState(false);
-  const [analyticsLoading,setAnalyticsLoading]=useState(false)
-const shortURLRef=useRef()
+ 
   const SERVER_CONNECTION_LINK=import.meta.env.VITE_SERVER_CONNECTION_LINK
 
-  console.log("server connection link is:",SERVER_CONNECTION_LINK)
-
-const createShortenUrl=()=>{
-  setShortURLLoading(true)
-  setShortURLtoAnalyze('')
-  setShortURLData('')
-  fetch(`${SERVER_CONNECTION_LINK}/shorten`,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      url:currentUrl
-    })
-  }).then(async (response)=>{
-    if(response.ok){
-      
-      const responseData=await response.json()
-      console.log("Successfully URL shorten.")
-      setShortUrl(responseData.shortUrl)
-      console.log("response data is :",responseData)
-      console.log("Generated short url is :",responseData.shortUrl)
-      setShortURLLoading(false)
-
-    }
-  })
-
-}
-
-const getShortUrlData=()=>{
-  setAnalyticsLoading(true)
-  fetch(`${SERVER_CONNECTION_LINK}/analysis`,{
-
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-
-  body:JSON.stringify({
-    url:shortURLtoAnalyze
-  })
-  }).then(async (response)=>{
-    if(response.ok){
-
-      const responseData=await response.json();
-      console.log("short url data is :",responseData
-      )
-      setShortURLData(responseData.shortUrlData)
-      setAnalyticsLoading(false)
-    }
 
 
-  }).catch(()=>{
-    console.log("Connot get Short url data ")
-  }
-  )
-}
 
-const handleURLInput=(e)=>{
-  const UrlInput=e.target.value;
-  const inputFieldName=e.target.name;
+useEffect(()=>{
+  window.scrollTo(0,0)
+})
 
-  switch(inputFieldName){
-    case 'shorten-url':
-      setCurrenUrl(UrlInput)
-      break;
-    case 'analyze-short-url':
-      setShortURLtoAnalyze(UrlInput)
-      break;
-  }
- 
-}
 
-const handleShortnBtnClick=()=>{
-  if(currentUrl){
-    createShortenUrl()
-
-  }
-  else{
-    alert("Please Enter URL")
-  }
-
-}
-
-const handleGetAnalysisBtnClick=()=>{
-  if(shortURLtoAnalyze){
-    getShortUrlData()
-
-  }
-  else{
-    alert("Please Enter your short URL")
-  }
-}
-
-const copyURL=async ()=>{
-  const shortURLText=shortURLRef.current.innerText;
-  console.log("copy text is:",shortURLText)
-copy(shortURLText)
-alert("Succesfully copied..")
-}
 
   return (
-    <div className='main-container'>
 
-      <h1 className='main-heading' >Convert your long URls into easy Short URLs</h1>
+<>
+<NavBar/>
+<URLShortner/>
+<Features/>
+<Footer/>
+</>
 
-      <h3 className='headings'>Long URLs to Short URLs </h3>
-    <div className='container'>
-      
-      <input onChange={handleURLInput} name='shorten-url' value={currentUrl} className="url-input" placeholder='Enter your URL'></input>
-
-      <button onClick={handleShortnBtnClick} className='button'>Short</button>
-
-    </div>
-
-{
- shortURLLoading?<p>Generating...</p>: shortUrl?
-   <div className='show-shorten-url'>  
-   <p ref={shortURLRef} >{shortUrl}</p>
-   <i class="fa-regular fa-copy copy-icon" onClick={copyURL}></i>
-  
-  </div>:''
-}
-
-
-<div className='space'></div>
-    <hr></hr>
-
-    <h3 className='headings'> Get Short URL Analytics</h3>
-    <div className='container'>
-      
-      <input onChange={handleURLInput} name='analyze-short-url'  className="url-input" value={shortURLtoAnalyze} placeholder='Enter your Short URL'></input>
-
-      <button onClick={handleGetAnalysisBtnClick} className='button'>Get Analysis</button>
-
-    </div>
-
-    {
-   
-   analyticsLoading?<p>Analysing...</p>: (shortURLData)?<div>
-<p><b>Total visit:</b>{shortURLData.visitHistory
-        .length}</p>
-        <p><b>Created At:</b> {shortURLData.createdAt}</p>
-        <p><b>Last Updated At:</b> {shortURLData.updatedAt}</p>
-        <p><b>Last visit At:</b> {
-        
-        shortURLData.visitHistory.length>0?   Date(shortURLData.visitHistory[shortURLData.visitHistory.length-1].timestamps):'No visit'
-        
-        }</p>
-
-      </div>:''
-    }
-    </div>
   )
 }
 
