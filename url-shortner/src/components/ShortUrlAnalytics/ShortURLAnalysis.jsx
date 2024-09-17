@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "./ShortURLAnalysis.css";
 import { NavBar } from "../Navbar/NavBar";
-import { Chart } from "chart.js";
+
 import { MyChart } from "../MyChart/MyChart";
 import { URLContext } from "../../contexts/URLContext.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
