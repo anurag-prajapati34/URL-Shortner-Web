@@ -60,6 +60,8 @@ export const MyChart = ({ shortUrlData }) => {
 
   //function that get all months url analytics data
   const allMonthsAnalytics = () => {
+
+
     const onlyVisitedMonthlyClicks = {};
     const monthlyClicks = {};
 
@@ -102,6 +104,7 @@ export const MyChart = ({ shortUrlData }) => {
     ///adding formated data to the state
     setallMonthsChartData(formatedData);
     return formatedData;
+
   };
 
   //funtion that get last seven days url analytics data
@@ -153,13 +156,14 @@ export const MyChart = ({ shortUrlData }) => {
     //changing last seven day state to hold anlysis data
     setlastSevenDaysChartData(formatedData);
 
+console.log("seven day formated data :",formatedData)
     //also return formated Data
     return formatedData;
   };
-
+console.log("last seven day char dat :",lastSevenDaysChartData)
   //use effect that run to analyse data this useEffect calls all the needed function that gets analysis data for urls
   useEffect(() => {
-    if (visits.length > 0) {
+    if (shortUrlData) {
       switch (shortingCriteria) {
         case "Last 7 Days":
           lastSevenDaysAnalytics();
@@ -246,15 +250,47 @@ export const MyChart = ({ shortUrlData }) => {
     return formatedData;
   };
 
+//function that check all conditon and then provide browser data that will be use to put in borwserChartOptions labels
+const borwserLabels=()=>{
+
+  if(shortUrlData){
+    if(visits.length>0){
+    
+return getBrowserAnalytics();
+    }else{
+      const noData=[{browser:"undefined",visits:0}]
+      return noData;
+    }
+  }else{
+    return browserDummy
+  }
+
+}
+
+///function that check all condition and then provide os data that will be used in osChartOption labels
+
+const osLables=()=>{
+  if(shortUrlData){
+    if(visits.length>0){
+      return getOsAnalytics();
+    }
+    else{
+      const noData=[{os:"undefined",visits:0}]
+      return noData;
+    }
+  }
+  else{
+    return osDummy
+  }
+}
+
   //create browser option fro pi chart
   const browserChartOptions = {
     chart: {
       type: "pie",
     },
-    labels:
-      getBrowserAnalytics().length > 0
-        ? getBrowserAnalytics().map((browser) => browser.browser)
-        : browserDummy.map((browser) => browser.browser),
+    labels:borwserLabels().map((browser)=>browser.browser)
+     ,
     dataLabels: {
       style: {
         fontSize: "20px", // Increase the size of data labels inside the pie chart
@@ -290,10 +326,7 @@ export const MyChart = ({ shortUrlData }) => {
     ],
   };
   //creating browser seriese for pi chart
-  const browserChartSeriese =
-    getBrowserAnalytics().length > 0
-      ? getBrowserAnalytics().map((browser) => browser.visits)
-      : browserDummy.map((browser) => browser.visits);
+  const browserChartSeriese =borwserLabels().map((browser)=>browser.visits)
 
   //creating os chart options for os pi chart
   const osChartOptions = {
@@ -301,9 +334,7 @@ export const MyChart = ({ shortUrlData }) => {
       type: "pie",
     },
     labels:
-      getOsAnalytics().length > 0
-        ? getOsAnalytics().map((os) => os.os)
-        : osDummy.map((os) => os.os),
+    osLables().map((os)=>os.os),
     dataLabels: {
       style: {
         fontSize: "20px", // Increase the size of data labels inside the pie chart
@@ -339,10 +370,7 @@ export const MyChart = ({ shortUrlData }) => {
     ],
   };
   //creating os chart series for operating system
-  const osChartSeriese =
-    getOsAnalytics().length > 0
-      ? getOsAnalytics().map((os) => os.visits)
-      : osDummy.map((os) => os.visits);
+  const osChartSeriese =osLables().map((os)=>os.visits)
 
   return (
     <>

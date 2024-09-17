@@ -107,7 +107,8 @@ const ShortURLAnalysis = () => {
               className="url-input"
               name="url-to-analysis"
               onChange={handleInputUrl}
-              placeholder="Enter your long URL"
+              placeholder="Enter your short URL"
+              autoComplete="off"
             ></input>
 
             <button onClick={handleSubmitUrl}>

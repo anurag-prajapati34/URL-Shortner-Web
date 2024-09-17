@@ -94,7 +94,8 @@ export const QRCode = () => {
           <div className="url-input-bg">
             <input
               className="url-input"
-              placeholder="Enter your long URL"
+              placeholder="Enter any URL"
+              autoComplete="off"
               onChange={handleUrlInput}
             ></input>
 

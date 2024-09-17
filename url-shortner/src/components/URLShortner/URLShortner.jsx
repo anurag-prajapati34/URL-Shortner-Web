@@ -67,6 +67,7 @@ export const URLShortner = () => {
             name="create-short-url"
             className="url-input"
             placeholder="Enter your long URL"
+            autoComplete="off"
             onChange={handleUrlInputChange}
           ></input>
 
