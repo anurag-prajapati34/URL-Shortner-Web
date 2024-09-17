@@ -125,7 +125,7 @@ const ShortURLAnalysis = () => {
             {ogUrl ? (
               <span className="url" >
                 <b className="og-url">Original URL : </b>
-                <p ref={ogUrlRef} className="flex gap-3">
+                <p ref={ogUrlRef} className="flex gap-3 max-w-[900px]">
                   {ogUrl}
                   <i
                     onClick={() => handleCopy(ogUrlRef)}
