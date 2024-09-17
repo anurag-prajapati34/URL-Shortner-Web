@@ -84,6 +84,8 @@ font-weight: 700;
   width: 100vw;
   z-index: 33;
   display: flex;
+  transition: 0.3s ease-in-out;
+  opacity: 1;
 
   }
   .menu-sidebar-extra-part{
@@ -118,6 +120,7 @@ cursor: pointer;
 }
 .hide-menu-sidebar{
 visibility: hidden;
+opacity: 0;
 }
 
   @media (max-width:650px) {

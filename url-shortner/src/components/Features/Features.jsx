@@ -1,8 +1,20 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import './Features.css'
 
 const Features = () => {
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const topOffset = element.offsetTop; // Get the vertical position of the section
+      window.scrollTo({
+        top: topOffset,
+        behavior: "smooth", // Smooth scroll
+      });
+    }
+  };
+
   return (
     <div className='w-full text-start'>
 <h1 className='feature-area-heading'>FEATURES</h1>
@@ -17,7 +29,7 @@ const Features = () => {
     {/* //description */}
     <p className='feature-desc'>Instantly transform long and complex URLs into sleek, easy-to-share links. Simplify your online presence and make your content more accessible.</p>
     {/* //call to action button */}
-    <NavLink to={'/'} className='btn'>Learn more</NavLink>
+    <button onClick={()=>scrollToSection('short-url')} className='btn'>Learn more</button>
 </div>
 
 

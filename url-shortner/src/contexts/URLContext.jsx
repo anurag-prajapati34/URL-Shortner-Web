@@ -25,7 +25,7 @@ const handleCopy=(element)=>{
   const copyValue=element.current.innerText;
 
 copy(copyValue)
-alert("Successfully copied")
+alert("Copied !")
 }
  
     return <URLContext.Provider value={

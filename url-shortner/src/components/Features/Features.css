@@ -24,6 +24,10 @@
       cursor: pointer;
       
     }
+    .feature:hover{
+      transition: 0.4s ease-in-out;
+      transform: scale(1.01);
+    }
     
     .feature .icon{
       color: var(--purplish-color);

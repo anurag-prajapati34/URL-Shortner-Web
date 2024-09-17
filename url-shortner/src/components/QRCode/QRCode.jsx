@@ -86,7 +86,7 @@ export const QRCode = () => {
           <h1 className="center-text">QR Code for URLs</h1>
         
         </div>
-        <p>Creat short URLs for your long URLs without signup</p>
+        <p className="max-w-[800px]">Transform your long URLs into quick-scan QR codes in seconds, hassle-free and shareable anywhere!</p>
 
         <div className="input-bg">
 

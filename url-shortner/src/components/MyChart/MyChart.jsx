@@ -370,7 +370,7 @@ export const MyChart = ({ shortUrlData }) => {
               type="monotone"
               dataKey={chartData ? chartData.datakey : "clicks"}
               stroke="#8884d8"
-              fill="rgba(130, 54, 206,0.8)"
+              fill="rgba(130, 54, 206,0.9)"
             />
           </AreaChart>
         </ResponsiveContainer>

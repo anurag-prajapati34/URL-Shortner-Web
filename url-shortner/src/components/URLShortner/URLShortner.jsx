@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { URLContext } from "../../contexts/URLContext.jsx";
 import "./URLShortner.css";
 import { Loader } from "../Loader/Loader.jsx";
@@ -42,7 +42,7 @@ export const URLShortner = () => {
       if (validateUrl(longUrl)) {
         createShortUrl();
       } else {
-        alert("Please Enter valid URL");
+        alert("Please Enter Valid URL");
       }
     }
   };
@@ -54,13 +54,13 @@ export const URLShortner = () => {
   };
 
   return (
-    <div className="main-container ">
+    <div id="short-url" className="main-container ">
       <div>
         <h1>Get Your</h1>
         <h1 className="center-text">Easy Short URLs</h1>
         <h1> For Free</h1>
       </div>
-      <p>Creat short URLs for your long URLs without signup</p>
+      <p>Simplify Your Links: Turn Long URLs into Shareable Short Links Instantly!</p>
       <div className="input-bg">
         <div className="url-input-bg">
           <input
@@ -89,7 +89,9 @@ export const URLShortner = () => {
 
           {shortUrl ? (
             <i
-              onClick={() => handleCopy(shortUrlRef)}
+              onClick={() => {
+                handleCopy(shortUrlRef);
+              }}
               class="fa-regular fa-copy copy-icon"
             ></i>
           ) : (

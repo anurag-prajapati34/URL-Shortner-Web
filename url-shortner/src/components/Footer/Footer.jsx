@@ -4,7 +4,7 @@ import './Footer.css'
 const Footer = () => {
 ///social links
   const linkedin='https://www.linkedin.com/in/anurag-prajapati34/'
-  const github='https://github.com/anurag-prajapati34?tab=repositories'
+  const github='https://github.com/anurag-prajapati34'
   const twitter='https://x.com/anurag_x34'
 
 
