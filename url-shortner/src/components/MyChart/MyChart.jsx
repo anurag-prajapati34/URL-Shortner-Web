@@ -193,11 +193,21 @@ export const MyChart = ({ shortUrlData }) => {
 
     visits.map((visit) => {
       const os = visit.os;
-      if (osData[os]) {
-        osData[os]++;
-      } else {
-        osData[os] = 1;
+      if(!os){
+        if(osData.others){
+          osData.others++;
+        }else{
+          osData.others=1;
+        }
+        
+      }else{
+        if (osData[os]) {
+          osData[os]++;
+        } else {
+          osData[os] = 1;
+        }
       }
+
     });
 
     const formatedData = Object.keys(osData).map((os) => ({
@@ -213,11 +223,20 @@ export const MyChart = ({ shortUrlData }) => {
     const browserData = {};
     visits.map((visit) => {
       const browser = visit.browser;
-      if (browserData[browser]) {
-        browserData[browser]++;
-      } else {
-        browserData[browser] = 1;
+      if(!browser){
+        if(browserData.others){
+          browserData.others++
+        }else{
+          browserData.others=1;
+        }
+      }else{
+        if (browserData[browser]) {
+          browserData[browser]++;
+        } else {
+          browserData[browser] = 1;
+        }
       }
+     
     });
 
     const formatedData = Object.keys(browserData).map((browser) => ({
