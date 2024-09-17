@@ -67,4 +67,9 @@
 
   }
 
+ .show-og-url{
+  max-width: 800px;
+ overflow: hidden;
+ text-overflow: ellipsis;
  
+ }

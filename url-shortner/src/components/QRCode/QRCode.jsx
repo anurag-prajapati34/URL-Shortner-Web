@@ -112,10 +112,10 @@ export const QRCode = () => {
         ) : (
           <div className="url-container mt-10 flex align-text-bottom">
             {ogUrl ? (
-              <span className="url" ref={ogUrlRef}>
+              <span className="url" >
                 <b className="og-url">Original URL : </b>
                 <p className="flex gap-3">
-                  {ogUrl}
+                <p ref={ogUrlRef} className="show-og-url">  {ogUrl}</p>
                   <i
                     onClick={() => handleCopy(ogUrlRef)}
                     class="fa-regular fa-copy copy-icon"
