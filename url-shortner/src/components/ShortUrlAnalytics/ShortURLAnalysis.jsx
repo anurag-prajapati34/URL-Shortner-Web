@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import "./ShortURLAnalysis.css";
+import "./ShortUrlAnalysis.css";
 import { NavBar } from "../Navbar/NavBar";
 
 import { MyChart } from "../MyChart/MyChart";
