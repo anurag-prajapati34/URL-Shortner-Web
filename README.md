@@ -24,8 +24,28 @@
 </ul>
 
 <h2>🌟 Screenshots</h2>
-<h3>🎛️ Dashboard</h3>
+<p><em>Caption: Home Page</em></p>
 
+![Home page](url-shortner/src/assets/home_page.png)
+
+
+![Features](url-shortner/src/assets/Features.png)
+<p><em>Caption:Analytics page</em></p>
+
+![Analytics page](url-shortner/src/assets/analytics_page.png)
+
+![Performance Area chart](url-shortner/src/assets/analysis1.png)
+
+![Performance Bar chart](url-shortner/src/assets/analysis2.png)
+
+![Device and Browser](url-shortner/src/assets/analysis3.png)
+
+![Met info](url-shortner/src/assets/meta_info.png)
+<p><em>Caption:QR Generation page</em></p>
+
+![Qr page ](url-shortner/src/assets/qr_page.png)
+
+![generated QR](url-shortner/src/assets/qr.png)
 
 <h2>🌐 Live Demo</h2>
 <p>Try out the <strong>live demo</strong> of QuickLink: <a href="https://quicklink-lfj0.onrender.com/" target="_blank">QuickLink Web App</a></p>
