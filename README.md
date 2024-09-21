@@ -2,8 +2,13 @@
 <h1>⚡ QuickLink - URL Shortener Web App</h1>
 
 
-
 <p><strong>QuickLink</strong> is a powerful web app designed to shorten long URLs, generate QR codes, and provide comprehensive analytics about their usage. Built using modern technologies like <strong>React.js</strong>, <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>MongoDB</strong>, QuickLink makes managing your URLs easier, faster, and smarter!</p>
+
+
+
+<h2>🌐 Live Demo : <a href="https://quicklink-lfj0.onrender.com/" target="_blank">QuickLink</a></h2>
+
+
 
 <h2>✨ Features</h2>
 <ul>
@@ -47,17 +52,14 @@
 
 ![generated QR](url-shortner/src/assets/qr.png)
 
-<h2>🌐 Live Demo</h2>
-<p>Try out the <strong>live demo</strong> of QuickLink: <a href="https://quicklink-lfj0.onrender.com/" target="_blank">QuickLink Web App</a></p>
 
 
 <h2>📞 Contact</h2>
 <p>Got questions? Feel free to reach out!</p>
 <ul>
-    <li>📧 <strong>Email</strong>: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
-    <li>🔗 <strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/yourprofile/" target="_blank">Your LinkedIn</a></li>
-    <li>🐙 <strong>GitHub</strong>: <a href="https://github.com/yourusername" target="_blank">Your GitHub Profile</a></li>
+    <li>📧 <strong>Email</strong>: <a href="mailto:prajapatianurag73240@gmail.com">prajapatianurag73240@gmail.com</a></li>
+    <li>🔗 <strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/anurag-prajapati34/" target="_blank">My LinkedIn</a></li>
+    <li>🐙 <strong>GitHub</strong>: <a href="https://github.com/anurag-prajapati34" target="_blank">GitHub Profile</a></li>
 </ul>
 
-</body>
-</html>
+
