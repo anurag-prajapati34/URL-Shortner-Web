@@ -14,18 +14,19 @@
 <ul>
     <li>🔗 <strong>URL Shortening</strong>: Quickly shorten long and complicated URLs into easy-to-share, short links.</li>
     <li>📊 <strong>Analytics</strong>: Get detailed insights into who’s clicking your links—track clicks, devices, browsers, and operating systems in real-time.</li>
-    <li>📅 <strong>Time-based Filters</strong>: View analytics by date ranges like today, last week, or even custom time periods.</li>
+    <li>📅 <strong>Time-based Filters</strong>: View analytics by date ranges like  last seven days, or complete.</li>
     <li>📱 <strong>QR Code Generation</strong>: Instantly generate a QR code for every shortened URL for easier sharing across devices.</li>
     <li>⚙️ <strong>Responsive Design</strong>: Optimized for use across all devices—whether it’s mobile, tablet, or desktop.</li>
 </ul>
 
 <h2>🚀 Tech Stack</h2>
 <ul>
-    <li><strong>Frontend:</strong> React.js, Tailwind CSS,Vanila CSS</li>
+    <li><strong>Frontend:</strong> React.js, Tailwind CSS, Vanila CSS </li>
     <li><strong>Backend:</strong> Node.js, Express.js</li>
     <li><strong>Database:</strong> MongoDB</li>
     <li><strong>Version Control:</strong> Git, GitHub</li>
     <li><strong>Deployment:</strong> Render</li>
+    <li><strong>Libraries:</strong> Rechart.js, ApexChart.js etc.</li>
 </ul>
 
 <h2>🌟 Screenshots</h2>
