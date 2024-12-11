@@ -13,7 +13,7 @@
   --secondary-color:#BBD1EA;
   --background-color:#04080F;
   --call-to-action-color:#0f1a2d; */
-
+  --primary-color:linear-gradient(to right, var(--bluish-color),var(--purplish-color));
   --bluish-color: #153ce9;
   --purplish-color: rgb(130, 54, 206);
   --dark-purplish-color: #63299e;
@@ -188,4 +188,13 @@ width: 100%;
 
     width: 100%;
   }
+}
+
+.primary-gradient-text{
+  background: linear-gradient(to right, var(--bluish-color),var(--purplish-color)); 
+  -webkit-text-fill-color: transparent; 
+  -webkit-background-clip: text;
+}
+.gradient-background{
+  background:  linear-gradient(to right, var(--bluish-color),var(--purplish-color))
 }

@@ -5,6 +5,7 @@ import { URLShortner } from './components/URLShortner/URLShortner'
 import { NavBar } from './components/Navbar/NavBar'
 import Features from './components/Features/Features'
 import Footer from './components/Footer/Footer'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
  
@@ -22,6 +23,7 @@ useEffect(()=>{
   return (
 
 <>
+<ToastContainer/>
 <NavBar/>
 <URLShortner/>
 <Features/>

@@ -6,6 +6,9 @@ import {Router, RouterProvider, createBrowserRouter} from 'react-router-dom'
 import ShortURLAnalysis from './components/ShortUrlAnalytics/ShortURLAnalysis.jsx'
 import { QRCode } from './components/QRCode/QRCode.jsx'
 import { URLContextProvider } from './contexts/URLContext.jsx'
+import {Loginpage} from './pages/Loginpage.jsx'
+import {Registerpage} from './pages/Registerpage.jsx'
+import { FirebaseAuthContextProvider } from './contexts/FirebaseAuthContext.jsx'
 
 
 const Routes =createBrowserRouter([
@@ -24,6 +27,13 @@ const Routes =createBrowserRouter([
   {
     path:'/url-redirection',
     element:<div>URL redirection componenet..</div>
+  },{
+    path:'/login',
+    element:<Loginpage/>
+  },
+  {
+    path:'/register',
+    element:<Registerpage/>
   }
 ])
 
@@ -31,11 +41,13 @@ createRoot(document.getElementById('root')).render(
 
 
 
-
+<FirebaseAuthContextProvider>
+  
 <URLContextProvider>
 
 <RouterProvider router={Routes}></RouterProvider>
   </URLContextProvider>
+</FirebaseAuthContextProvider>
 
 
 

@@ -5,7 +5,9 @@ const UAParser  =require('ua-parser-js')
 const mongoose=require('mongoose') //mongoose package
 const qrcode=require('qrcode')
 
-const dotenv=require('dotenv')
+const dotenv=require('dotenv');
+const UserModel = require('./models/UserModel');
+const { registerUser } = require('./controllers/userController');
 dotenv.config()
 const PORT=process.env.PORT || 7000
 const SERVER_STRING=process.env.SERVER_STRING
@@ -119,13 +121,14 @@ console.log("Client inro:",extraClientInfo)
 
 
 })
-
+app.post("/user", registerUser);
 
 app.post('/shorten',async (req,res)=>{
 
     const body=req.body
     console.log("Sent req body:",body)
     const originalUrl=body.url
+    const userAuthId=body?.userAuthId
 console.log("Sent long url:",originalUrl)
 
 const shortId=generateUniqueId({
@@ -139,18 +142,21 @@ console.log("short url is",shortUrl)
         return res.send("Enter a url")
     }
   
-   await ShortUrl.create({
+
+    
+const urlresult= await UserModel.findOneAndUpdate({userAuthId},{$push:{
+    urls:{
         shortId:shortId,
         originalUrl:originalUrl,
-        shortUrl:shortUrl
-    }).then(()=>{
-        return res.status(201).json({shortUrl:shortUrl,test:"just testing.."})
+         shortUrl:shortUrl
     }
-    ).catch(()=>{
-        return res.status(500).send("Server error")
-    })
-    
-    
+}}).then(()=>{
+             return res.status(201).json({shortUrl:shortUrl,test:"just testing.."})
+         }
+         ).catch((err)=>{
+            console.log("err:",err)
+             return res.status(500).send("Server error")
+         })
    
 
 })

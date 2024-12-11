@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { URLContext } from "../../contexts/URLContext.jsx";
 import "./URLShortner.css";
 import { Loader } from "../Loader/Loader.jsx";
+import { FirebaseAuthContext } from "../../contexts/FirebaseAuthContext.jsx";
+import { ToastContainer, toast } from "react-toastify";
 
 export const URLShortner = () => {
   const [longUrl, setLongUrl] = useState();
@@ -10,9 +12,14 @@ export const URLShortner = () => {
   const SERVER_STRING = import.meta.env.VITE_SERVER_CONNECTION_LINK;
   const { handleCopy, validateUrl } = useContext(URLContext);
   const shortUrlRef = useRef();
+  const {logedInUser}=useContext(FirebaseAuthContext)
 
   //function that connect with backend and generate short url for long urls
   const createShortUrl = () => {
+    if(!logedInUser){
+      toast.error("Login first");
+      return ;
+    }
     setLoading(true);
     fetch(`${SERVER_STRING}/shorten`, {
       method: "POST",
@@ -21,6 +28,7 @@ export const URLShortner = () => {
       },
       body: JSON.stringify({
         url: longUrl,
+        userAuthId:logedInUser?.uid
       }),
     })
       .then(async (response) => {
@@ -55,6 +63,7 @@ export const URLShortner = () => {
 
   return (
     <div id="short-url" className="main-container ">
+      <ToastContainer/>
       <div>
         <h1>Get Your</h1>
         <h1 className="center-text">Easy Short URLs</h1>
